@@ -1,12 +1,11 @@
-version: '2'
+version: '3'
 
 services:
   ivideon-server:
     image: croc/ivideon-server
     volumes:
-      - '/etc/localtime:/etc/localtime:ro'
-      - './config:/headless/.IvideonServer/'
+      - '/etc/localtime:/etc/localtime'
+      - './ivideon-data:/home/ivideon/.IvideonServer'
     ports:
-      - '15901:5901'
-      - '16901:6901'
-    restart: always
+      - '3389:3389'
+    restart: unless-stopped

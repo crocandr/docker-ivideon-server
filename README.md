@@ -1,10 +1,8 @@
-# Ivideon Server for docker
+# Ivideon Server for Docker
 
 ## More information
 
-  - https://hub.docker.com/r/consol/ubuntu-xfce-vnc
   - https://www.ivideon.com/ivideon-server-linux/
-
 
 ## Build
 
@@ -12,31 +10,37 @@
 docker build -t croc/ivideon-server .
 ```
 
-## Run
+## Usage
 
-Use docker-compose.
+Use docker compose method, more simple and easier:
 
 ```
 docker-compose up -d
 ```
 
-Do not forget to change the `config` directory permission after the first start!
-```
-chmod 777 config
-```
+## Setup
 
-## Usage
+You have to setup ivideon-server after the started the container.
+Connect with a remote desktop client to the docker host (container) IP and 3389 TCP port.
+Check the `docker-compose logs` output for the auto-generated password. (Username is fixed: `ivideon`)
+Login on the GUI and start `ivideon-server` program. Step through the ivideon server setup wizard. Enjoy :)
 
-  - Open the VNC console in your browser. Port is 16901 by default. URL: http://< IP of your docker host >:16901 (URL example: http://192.168.1.11:16901 )
-  - Type the default password: `vncpassword`
-  - Open a terminal or find in the menu to open the `ivideon-server` (if the program does not start, check the config folder permission first)
-  - Follow the wizard to configure the ivideon server
+## Known problems
 
-## Known bugs
+  - You have to start ivideon-server program manually every time, when the container/docker host restarted.
 
-  - You have to start the `ivideon-server` manually every time when you restarted the container
+  - the Linux GUI uses EN/US keyboard layout only
 
+## Recommendations
+
+Remote desktop clients:
+
+  - for Windows:
+    - use the default remote desktop client (mstsc)
+  - for Linux:
+    - remmina (https://remmina.org/)
+  - for macOS:
+    - Microsoft Remote Desktop for Mac
 
 
 Good Luck!
-
